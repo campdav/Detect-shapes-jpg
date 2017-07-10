@@ -12,6 +12,7 @@ rects = []
 
 
 def extractShapes(imagePath,target_color="red", target_shape="rectangle", testcontrol=False):
+    rects = []
     # load the image and resize it to a smaller factor so that
     # the shapes can be approximated better
     image = cv2.imread(imagePath)
@@ -28,7 +29,7 @@ def extractShapes(imagePath,target_color="red", target_shape="rectangle", testco
 
     lab = cv2.cvtColor(blurred, cv2.COLOR_BGR2LAB)
 
-    thresh = cv2.threshold(gray, 60, 255, cv2.THRESH_BINARY)[1]
+    thresh = cv2.threshold(gray, 20, 255, cv2.THRESH_BINARY)[1]
 
     if testcontrol ==True:
         cv2.imwrite("./Data/output/resized.jpg", resized)
@@ -98,7 +99,7 @@ if __name__ == "__main__":
     ap.add_argument("-s", "--shape", required=True,
     	help="shape to be detected")
     args = vars(ap.parse_args())
-    result = extractShapes(args["image"],args["color"], args["shape"])
+    result = extractShapes(args["image"],args["color"], args["shape"], testcontrol=True)
 
     if result:
         print("[*] Succces extract %s %s from %s: %s" % (args["color"], args["shape"], args["image"], result))
