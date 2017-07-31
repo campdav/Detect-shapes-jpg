@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# test/train/input data
+data/input/
+
 # Distribution / packaging
 .Python
 env/
