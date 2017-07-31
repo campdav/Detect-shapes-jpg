@@ -6,8 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
-# test/train/input data
+# useless test/train/input data
 data/input/
+data/output/
+data/temp/
+data/tagged/
 
 # Distribution / packaging
 .Python
